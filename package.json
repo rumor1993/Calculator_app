@@ -12,20 +12,20 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run bulid",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
-  "homepage": "http://rumor1993.github.io/Calculator",
+  "homepage": "http://rumor1993.github.io/Calculator_app",
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "gh-pages": "^2.0.1"
-  }
+  ]
 }
