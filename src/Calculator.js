@@ -1,67 +1,86 @@
 import React, {Component} from 'react';
+import './Calculator.css';
 
 class Calculator extends Component {
     state = {
-        sum:0,
-        calculatorState: 0,
-        name:0
-    }
+        view:'',
+        sum:'',
+    } 
 
-
-    handleChange = (e) => {
-        this.setState({
-            name: e.target.value
-        });
-    }
-
-
-    handleIncrease = () => {
-        this.setState({
-            calculatorState: this.state.name + "+",
-            sum: this.state.sum + this.state.name * 1,
-            name: 0
-        });
-    }
-
-    handleDecrease = () => {
-        this.setState({
-            sum: this.state.sum - this.state.name * 1,
-            name: 0
-        });
-    }
-
-    handleMultiply = () => {
-        this.setState({
-            sum: this.state.sum * this.state.name * 1,
-            name: 0
-        });
-    }
     
-    handleDivision = () => {
+    handleAdd = (e) => {
         this.setState({
-            sum: this.state.sum / this.state.name * 1,
-            name: 0
-        });
+            view: this.state.view + e.currentTarget.textContent
+            
+        })
     }
 
+    handleCalc = () => {
+        this.setState({
+          sum: eval(this.state.view),
+          
+        })
+    }
+
+    handleCancel = () => {
+        this.setState({
+            view: '',
+            sum:''
+        })
+    }
 
     render() {
         return (
           <div className="calculator">
-            <h1>계산기</h1>
-            <div>값을 입력하세요 <input onChange={this.handleChange} value={this.state.name}></input> </div>
-            <div>값 :  {this.state.sum} </div>
+
+        <h1>계산기</h1>
+            <input value={this.state.view}></input> 
+               
+               
+                <table>
+
+             
+
+                 <tr>
+                    <td><button onClick={this.handleAdd}>1</button></td>
+                    <td><button onClick={this.handleAdd}>2</button></td>
+                    <td><button onClick={this.handleAdd}>3</button></td>
+                    <td><button onClick={this.handleAdd}>+</button></td>
+                </tr>
+
+                <tr>
+                    <td><button onClick={this.handleAdd}>4</button></td>
+                    <td><button onClick={this.handleAdd}>5</button></td>
+                    <td><button onClick={this.handleAdd}>6</button></td>
+                    <td><button onClick={this.handleAdd}>-</button></td>
+                </tr>
+
+                <tr>
+                    <td><button onClick={this.handleAdd}>7</button></td>
+                    <td><button onClick={this.handleAdd}>8</button></td>
+                    <td><button onClick={this.handleAdd}>9</button></td>
+                    <td><button onClick={this.handleAdd}>*</button></td>
+                </tr>
+
+                    <tr>
+                    <td></td>
+                    <td><button onClick={this.handleAdd}>0</button></td>
+                    <td><button onClick={this.handleCancel}>C</button></td>
+                    <td><button onClick={this.handleAdd}>/</button></td>
+                </tr>
+            </table>
+
+            <button onClick={this.handleCalc}>result</button> 
+             
+             <div>값 :  {this.state.sum} </div>
             
             
-            <button onClick={this.handleIncrease}>+</button>
-            <button onClick={this.handleDecrease}>-</button>
-            <button onClick={this.handleMultiply}>*</button>
-            <button onClick={this.handleDivision}>/</button>
 
           </div>
-        );
+        )
       }
     }
+    
 
 
     export default Calculator;
